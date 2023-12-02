@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block css %}
+
+    <style>
+        body{
+            background-color:black !important;
+        }
+    </style>
+
+{% endblock css %}
+
+
+{% block content %}
+{% include "partials/_navbar.html" %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h3 class='text-white '>Aramızda eşleşen  filmler</h3>
+         
+        </div>
+{% comment %} Bütün filmler için {% endcomment %}
+        {% for film in korku_filmler %}
+            <div class='col-3'>
+                <div class="card bg-transparent m-2">
+                    <img src="{{film.image.url}}" alt="">
+                    <p class='text-white text-center fs-4'>{{film.title}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

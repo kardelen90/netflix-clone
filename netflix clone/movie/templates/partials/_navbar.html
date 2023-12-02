@@ -1,0 +1,52 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
+    <div class="container-fluid">
+        <a href="{% url 'indexPage' %}"><img src="{% static 'img/netflix_logo.png' %}" class="resim" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex justify-content-between align-items-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex w-50" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
+                <ul class="dropdown text-start">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{profil.image.url}}" alt="mdo" width="32" height="32" class="rounded-circle">
+                        {{profil.title}}
+                    </a>
+                    <ul class="dropdown-menu text-small dropdown-menu-end">
+                        {% for i in profiller %}
+                            {% if i.id != id %}
+                                <li><a class="dropdown-item" href="#">
+                                    <img src="{{i.image.url}}" alt="mdo" width="32" height="32" class="rounded-circle">
+                                    {{i.title}}
+                                </a></li>
+                            {% endif %}
+                        {% endfor %}
+
+
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url "logoutPage" %}">Çıkış Yap</a></li>
+                    </ul>
+                </ul>                
+            </div>
+        </div>
+    </div>
+</nav>
